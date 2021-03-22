@@ -1,33 +1,33 @@
 import React from "react";
-import logo from "../logo.svg";
+import PropTypes from "prop-types";
 
-export const Nav = () => {
+export const Nav = ({ style }) => {
   return (
-    <header class="bg-black-90 fixed w-100 ph3 pv3 pv4-ns ph4-m ph5-l">
-      <nav class="f6 fw6 ttu tracked">
-      <a className="dtc v-mid mid-gray link dim w-25" href="#" title="Home">
-        <img src={logo} className="dib w2 h2 br-100" alt="Site Name" />
-      </a>
-      <div className="dtc v-mid w-75 tr">
-        <a
-          className="link dim white f6 f5-ns dib mr3 mr4-ns"
-          href="#"
-          title="About"
-        >
-          Services
-        </a>
-        <a
-          className="link dim white f6 f5-ns dib mr3 mr4-ns"
-          href="#"
-          title="Store"
-        >
-          Blog
-        </a>
-        <a className="link dim white f6 f5-ns dib" href="#" title="Contact">
-          Join Us
-        </a>
-      </div>
+    <section className="bb fixed dt w-100 cf" style={style}>
+      <nav className="pl4 tracked">
+        <div className="flex flex-wrap">
+          <div className="w-100 w-third-ns">
+            <h1 className="bl bw2 f5 pl1 mb0">Kim Kopowski</h1>
+          </div>
+        </div>
+        <div className="mv1 f6">
+          <a
+            href="mailto:kim.kopowski@gmail.com"
+            className="db link dim"
+            style={style}
+          >
+            kim.kopowski@gmail.com
+          </a>
+
+          <a href="tel:+15033880601" className="db link dim" style={style}>
+            1-503-388-0601
+          </a>
+        </div>
       </nav>
-    </header>
+    </section>
   );
+};
+
+Nav.propTypes = {
+  style: PropTypes.object,
 };
