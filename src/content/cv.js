@@ -21,15 +21,15 @@ export const jobData = [
     location: "Portland, OR",
     experience: [
       {
-        task: `Develop reusable UI components for complex healthcare applications in collaboration with product and design team. For example, translated complex design concept into a new UI solution that enables clincal adminstrators to configure healtcare application.`,
+        task: `Develop reusable UI components for complex healthcare applications in collaboration with the product and design team. For example, translating complex design concepts into a new UI solution enables clinical administrators to configure healthcare applications.`,
         tools: ["javascript", "React", "antd", "cypress"],
       },
       {
-        task: `Breaking a Monolith into Microservices. Contributed to project that moved static configuration files into a decoupled configuration service. Enhanced monitoring and logging for existing clinical content services.`,
+        task: `Breaking a Monolith into Microservices. Contributed to a project that moved static configuration files into a decoupled configuration service. Enhanced monitoring and logging for existing clinical content services.`,
         tools: ["Python", "Tornado", "postgres", "docker"],
       },
       {
-        task: `Deploy and monitor microservices and serverless components. IE: Taking part in rotating on-call duties that inclucde peridic deployment to any production service.`,
+        task: `Deploy and monitor microservices and serverless components. IE: Taking part in rotating on-call duties that include frequent deployment to any production service.`,
         tools: ["jenkins", "aws", "ecs", "ecr", "kibana", "datadog"],
       },
     ],
@@ -97,7 +97,7 @@ export const jobData = [
         tools: ["x++", ".net"],
       },
       {
-        task: `Initiated development of new Customer Sucess Team to increase satisfaction and 
+        task: `Collaborated on new Customer Sucess Team initiative to increase satisfaction and 
           drive revenue with an existing customer base.`,
         tools: [],
       },
@@ -111,11 +111,11 @@ export const jobData = [
     company: "DXC Technology",
     experience: [
       {
-        task: `Served as lead architect on large-scale project for the Dallas Cowboys NFL franchise. Completed ERP implementation ncluding retail, point-of-sale, ecommerce, logistics, K3 Apparel ISV, finance, and manufacturing modules.`,
+        task: `Served as lead architect on a large-scale project for the Dallas Cowboys NFL franchise. Completed ERP implementation, including retail, point-of-sale, e-commerce, logistics, K3 Apparel ISV, finance, and manufacturing modules.`,
         tools: ["retail", "omni channel", "mssql", ".net", "tfs", "ax2012"],
       },
       {
-        task: `Provided leadership for offshore resources including resource management, technical and design oversight.`,
+        task: `Provided leadership for offshore resources, including resource management, technical and design oversight.`,
         tools: [],
       },
       {
