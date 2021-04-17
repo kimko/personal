@@ -25,7 +25,8 @@
     "eject": "react-scripts eject",
     "css": "tachyons src/css/app.css > src/index.css --minify",
     "prestart": "npm run css",
-    "prebuild": "npm run css"
+    "prebuild": "npm run css",
+    "format": "./node_modules/.bin/prettier --write src/*"
   },
   "eslintConfig": {
     "extends": [
