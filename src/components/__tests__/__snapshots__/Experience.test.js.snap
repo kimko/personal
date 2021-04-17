@@ -1,0 +1,258 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a Experience section 1`] = `
+<DocumentFragment>
+  <section
+    class="bb w-100 cf pl4 pb2"
+    data-testid="test-section-experience"
+  >
+    <div
+      class="flex flex-wrap"
+    >
+      <div
+        class="w-100 w-third-ns"
+      >
+        <h1
+          class="bl bw2 f5 pl1"
+        >
+          Experience
+        </h1>
+      </div>
+    </div>
+    <article
+      class="pt2 f6"
+    >
+      <div
+        class="flex flex-wrap"
+      >
+        <div
+          class="w-100 w-third-ns"
+        >
+          <h1
+            class="cf f6 mv1"
+          >
+            <time
+              class="fl"
+              datetime="2018-07"
+            >
+              2020
+            </time>
+            <span
+              class="fl ph1"
+            >
+              -
+            </span>
+            <time
+              class="fl"
+              datetime="2021-03"
+            >
+              Present
+            </time>
+          </h1>
+          <div
+            class="fl f6"
+          >
+            Portland, OR
+          </div>
+        </div>
+        <div
+          class="w-100 w-two-thirds-ns pl4-ns"
+        >
+          <h1
+            class=" f6 mv1 pr2"
+          >
+            <span
+              class=""
+            >
+              Cat Herder
+            </span>
+            <span
+              class="f7 ph1"
+            >
+              -
+            </span>
+            <span
+              class="f7"
+            >
+              Cats'r'Us
+            </span>
+          </h1>
+          <ul
+            class="pl3 pr2 mt0"
+          >
+            <li
+              class="pb2 mw6"
+            >
+              <div>
+                <span
+                  class="mr1"
+                >
+                  Play with Cats.
+                </span>
+                <span
+                  class="f7 near-black ttl pr1 dib ba b--dotted mr1 tracked-tight
+        bg-animate hover-bg-gray hover-near-black"
+                >
+                  yarn
+                </span>
+                <span
+                  class="f7 near-black ttl pr1 dib ba b--dotted mr1 tracked-tight
+        bg-animate hover-bg-gray hover-near-black"
+                >
+                  flashlight
+                </span>
+              </div>
+            </li>
+            <li
+              class="pb2 mw6"
+            >
+              <div>
+                <span
+                  class="mr1"
+                >
+                  Fed the Cats
+                </span>
+                <span
+                  class="f7 near-black ttl pr1 dib ba b--dotted mr1 tracked-tight
+        bg-animate hover-bg-gray hover-near-black"
+                >
+                  Milk
+                </span>
+                <span
+                  class="f7 near-black ttl pr1 dib ba b--dotted mr1 tracked-tight
+        bg-animate hover-bg-gray hover-near-black"
+                >
+                  Kibble
+                </span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </article>
+    <article
+      class="pt2 f6"
+    >
+      <div
+        class="flex flex-wrap"
+      >
+        <div
+          class="w-100 w-third-ns"
+        >
+          <h1
+            class="cf f6 mv1"
+          >
+            <time
+              class="fl"
+              datetime="2018-07"
+            >
+              2018
+            </time>
+            <span
+              class="fl ph1"
+            >
+              -
+            </span>
+            <time
+              class="fl"
+              datetime="2021-03"
+            >
+              2020
+            </time>
+          </h1>
+          <div
+            class="fl f6"
+          >
+            Portland, OR
+          </div>
+        </div>
+        <div
+          class="w-100 w-two-thirds-ns pl4-ns"
+        >
+          <h1
+            class=" f6 mv1 pr2"
+          >
+            <span
+              class=""
+            >
+              Hahum
+            </span>
+            <span
+              class="f7 ph1"
+            >
+              -
+            </span>
+            <span
+              class="f7"
+            >
+              Hmm
+            </span>
+          </h1>
+          <ul
+            class="pl3 pr2 mt0"
+          >
+            <li
+              class="pb2 mw6"
+            >
+              <div>
+                <span
+                  class="mr1"
+                >
+                  Task task task task task task.
+                </span>
+                <span
+                  class="f7 near-black ttl pr1 dib ba b--dotted mr1 tracked-tight
+        bg-animate hover-bg-gray hover-near-black"
+                >
+                  tool1
+                </span>
+                <span
+                  class="f7 near-black ttl pr1 dib ba b--dotted mr1 tracked-tight
+        bg-animate hover-bg-gray hover-near-black"
+                >
+                  tool2
+                </span>
+                <span
+                  class="f7 near-black ttl pr1 dib ba b--dotted mr1 tracked-tight
+        bg-animate hover-bg-gray hover-near-black"
+                >
+                  tool3
+                </span>
+              </div>
+            </li>
+            <li
+              class="pb2 mw6"
+            >
+              <div>
+                <span
+                  class="mr1"
+                >
+                  asdf jkl;
+                </span>
+                <span
+                  class="f7 near-black ttl pr1 dib ba b--dotted mr1 tracked-tight
+        bg-animate hover-bg-gray hover-near-black"
+                >
+                  a
+                </span>
+                <span
+                  class="f7 near-black ttl pr1 dib ba b--dotted mr1 tracked-tight
+        bg-animate hover-bg-gray hover-near-black"
+                >
+                  b
+                </span>
+                <span
+                  class="f7 near-black ttl pr1 dib ba b--dotted mr1 tracked-tight
+        bg-animate hover-bg-gray hover-near-black"
+                >
+                  d
+                </span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </article>
+  </section>
+</DocumentFragment>
+`;

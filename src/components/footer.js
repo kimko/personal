@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 export const SocialSimple = (props) => {
   return (
-    <footer className="pa2 tc">
+    <footer className="pa2 tc" data-testid="test-footer-social">
       <a
         className="link dim dib h2 w2 mh3"
         href="https://github.com/kimko"

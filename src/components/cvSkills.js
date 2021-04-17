@@ -40,7 +40,11 @@ const processSkillData = (data) => {
 export const Skills = (props) => {
   const skills = processSkillData(props.skillData);
   return (
-    <section className="bb w-100 cf pl4" style={props.style}>
+    <section
+      className="bb w-100 cf pl4"
+      style={props.style}
+      data-testid="test-section-skills"
+    >
       <h1 className="bl bw2 f4 pl1">Technical Skills</h1>
       <ul className="list pl3 pl0-ns pr2">{skills}</ul>
     </section>

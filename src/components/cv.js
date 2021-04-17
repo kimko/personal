@@ -11,7 +11,12 @@ import * as cvContent from "./../content/cv";
 export const Cv = (props) => {
   return (
     <div>
-      <Nav style={props.style} />
+      <Nav
+        style={props.style}
+        name={cvContent.nav.name}
+        email={cvContent.nav.email}
+        phone={cvContent.nav.phone}
+      />
       <Summary
         title={cvContent.title}
         shortDescription={cvContent.shortDescription}

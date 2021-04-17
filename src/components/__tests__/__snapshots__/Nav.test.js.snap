@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a Nav section 1`] = `
+<DocumentFragment>
+  <section
+    class="bb fixed dt w-100 cf"
+    data-testid="test-section-nav"
+  >
+    <nav
+      class="pl4 tracked"
+    >
+      <div
+        class="flex flex-wrap"
+      >
+        <div
+          class="w-100 w-third-ns"
+        >
+          <h1
+            class="bl bw2 f5 pl1 mb0"
+          >
+            Angela Merkel
+          </h1>
+        </div>
+      </div>
+      <div
+        class="mv1 f6"
+      >
+        <a
+          class="db link dim"
+          href="mailto:kanzler@bundestag.de"
+        >
+          kanzler@bundestag.de
+        </a>
+        <a
+          class="db link dim"
+          href="tel:+11234567890"
+        >
+          1-123-456-7890
+        </a>
+      </div>
+    </nav>
+  </section>
+</DocumentFragment>
+`;

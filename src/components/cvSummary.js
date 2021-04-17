@@ -42,7 +42,7 @@ ShortDescription.propTypes = {
 
 const SummaryList = ({ summary }) => {
   return (
-    <article>
+    <article data-testid="test-article-summary">
       <ul className="pl3 pt4-ns pr2">
         {summary.map((item, idx) => (
           <li key={idx} className="pv1 mw7">

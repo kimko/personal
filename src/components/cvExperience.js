@@ -5,7 +5,7 @@ export const Task = (props) => {
   const classn = `f7 near-black ttl pr1 dib ba b--dotted mr1 tracked-tight
         bg-animate hover-bg-gray hover-near-black`;
   return (
-    <li key={props.key} className="pb2 mw6">
+    <li className="pb2 mw6">
       <div>
         <span className="mr1">{props.task}</span>
         {props.tools.map((item, idx) => (
@@ -19,7 +19,6 @@ export const Task = (props) => {
 };
 
 Task.propTypes = {
-  key: PropTypes.string,
   task: PropTypes.string,
   tools: PropTypes.array,
 };
@@ -63,7 +62,11 @@ Job.propTypes = {
 
 export const Experience = (props) => {
   return (
-    <section className="bb w-100 cf pl4 pb2" style={props.style}>
+    <section
+      className="bb w-100 cf pl4 pb2"
+      style={props.style}
+      data-testid="test-section-experience"
+    >
       <div className="flex flex-wrap">
         <div className="w-100 w-third-ns">
           <h1 className="bl bw2 f5 pl1">Experience</h1>

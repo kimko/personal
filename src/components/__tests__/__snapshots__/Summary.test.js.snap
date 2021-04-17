@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a Summary 1`] = `
+<DocumentFragment>
+  <article
+    class="bb w-100 cf f6 pt5 pl4"
+  >
+    <div
+      class="flex flex-wrap"
+    >
+      <div
+        class="w-100 w-third-ns"
+      >
+        <article
+          class="measure-narrow measure-ns pt2"
+        >
+          <h1
+            class="bl bw2 f5 pl1"
+          >
+            title asdf
+          </h1>
+          <p
+            class=""
+          >
+            description asdf
+          </p>
+        </article>
+      </div>
+      <div
+        class="w-100 w-two-thirds-ns pl4-ns"
+      >
+        <article
+          data-testid="test-article-summary"
+        >
+          <ul
+            class="pl3 pt4-ns pr2"
+          >
+            <li
+              class="pv1 mw7"
+            >
+              qwert
+            </li>
+            <li
+              class="pv1 mw7"
+            >
+              yuiop
+            </li>
+            <li
+              class="pv1 mw7"
+            >
+              asdf
+            </li>
+            <li
+              class="pv1 mw7"
+            >
+              ghjkl
+            </li>
+            <li
+              class="pv1 mw7"
+            >
+              zxcvb
+            </li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </article>
+</DocumentFragment>
+`;

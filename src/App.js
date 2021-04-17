@@ -22,7 +22,7 @@ function App() {
   }, []);
   return (
     <Router>
-      <div className="courier" style={style}>
+      <div className="courier" style={style} data-testid="test-div-app">
         <a id="top-anchor" ref={topAnchor} href="#top-anchor" />
         <Switch>
           <Route path="/cv">

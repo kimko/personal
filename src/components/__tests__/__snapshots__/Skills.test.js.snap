@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a Skill section 1`] = `
+<DocumentFragment>
+  <section
+    class="bb w-100 cf pl4"
+    data-testid="test-section-skills"
+  >
+    <h1
+      class="bl bw2 f4 pl1"
+    >
+      Technical Skills
+    </h1>
+    <ul
+      class="list pl3 pl0-ns pr2"
+    >
+      <li
+        class="dib mr1 mb2"
+      >
+        <div
+          class="f7 b db pa2 link dim ba  bg-light-silver"
+        >
+          animals
+        </div>
+      </li>
+      <li
+        class="dib mr1 mb2"
+      >
+        <div
+          class="f7 b db pa2 link dim ba "
+        >
+          cats
+        </div>
+      </li>
+      <li
+        class="dib mr1 mb2"
+      >
+        <div
+          class="f7 b db pa2 link dim ba "
+        >
+          red-pandas
+        </div>
+      </li>
+      <li
+        class="dib mr1 mb2"
+      >
+        <div
+          class="f7 b db pa2 link dim ba  bg-light-silver"
+        >
+          other
+        </div>
+      </li>
+      <li
+        class="dib mr1 mb2"
+      >
+        <div
+          class="f7 b db pa2 link dim ba "
+        >
+          skill
+        </div>
+      </li>
+      <li
+        class="dib mr1 mb2"
+      >
+        <div
+          class="f7 b db pa2 link dim ba "
+        >
+          data
+        </div>
+      </li>
+    </ul>
+  </section>
+</DocumentFragment>
+`;

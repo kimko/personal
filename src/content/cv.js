@@ -12,6 +12,14 @@ export const summary = [
   "Data-driven",
 ];
 
+export const nav = {
+  name: "Kim Kopowski",
+  email: "kim.kopowski@gmail.com",
+  phone: {
+    raw: "+15033880601",
+    pretty: "1-503-388-0601",
+  },
+};
 export const jobData = [
   {
     start: "2020",
