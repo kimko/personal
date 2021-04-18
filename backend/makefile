@@ -6,3 +6,6 @@ build:
 
 psql:
 	docker-compose exec web-db psql -U postgres
+
+test:
+	docker-compose exec web python -m pytest
