@@ -1,8 +1,12 @@
 import React, { useRef, useEffect } from "react";
 import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
 
+import ReactGA from "react-ga";
+
 import { Cv } from "./components/cv";
 import { CvPlain } from "./components/cvPlain";
+
+ReactGA.initialize("UA-12341234-1", { standardImplementation: true });
 // TODO useContext hook
 const style = {
   // color: "#FFFF00",
