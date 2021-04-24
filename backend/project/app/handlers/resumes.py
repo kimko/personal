@@ -3,7 +3,7 @@ from datetime import datetime
 from fastapi import APIRouter, HTTPException
 
 from app.controllers import resumes
-from app.models.resume import ResumePayloadSchema, ResumeResponseSchema
+from app.models.resume import ResumePayloadSchema, ResumeResponseSchema, ResumeSchema
 
 
 router = APIRouter()
@@ -23,3 +23,11 @@ async def create_summary(payload: ResumePayloadSchema) -> ResumeResponseSchema:
         # "created_at": datetime,
         }
     return response_object
+
+@router.get("/{id}/", response_model=ResumeSchema   )
+async def read_resume(id: int) -> ResumeSchema  :
+    resume = await resumes.get(id)
+    if not resume:
+        raise HTTPException(status_code=404, detail="Resume not found")
+
+    return resume
