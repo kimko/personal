@@ -1,5 +1,4 @@
-from app.models.pydantic import ResumePayloadSchema
-from app.models.tortoise import Resume
+from app.models.resume import Resume, ResumePayloadSchema
 
 
 async def post(payload: ResumePayloadSchema) -> int:

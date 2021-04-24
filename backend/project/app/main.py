@@ -3,7 +3,7 @@ import logging
 from fastapi import FastAPI
 from tortoise.contrib.fastapi import register_tortoise
 
-from app.api import ping, resumes
+from app.handlers import ping, resumes
 from app.db import init_db
 
 

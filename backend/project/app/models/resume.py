@@ -1,5 +1,17 @@
+from typing import List, Optional
+from pydantic import BaseModel
+
 from tortoise import fields, models
 
+class ResumePayloadSchema(BaseModel):
+    title: str
+    shortDescription: Optional[str] = ""
+    name: str
+    email: Optional[str] = ""
+    phone: Optional[str] = ""
+
+class ResumeResponseSchema(ResumePayloadSchema):
+    id: int
 
 class Resume(models.Model):
     title = fields.TextField()
