@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Union, List
 
 from app.models.resume import Resume, ResumePayloadSchema
 
@@ -19,3 +19,7 @@ async def get(id: int) -> Union[dict, None]:
     if resume:
         return resume[0]
     return None
+
+async def get_all() -> List:
+    resumes = await Resume.all().values()
+    return resumes

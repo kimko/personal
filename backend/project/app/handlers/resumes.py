@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import List
 
 from fastapi import APIRouter, HTTPException
 
@@ -24,10 +25,14 @@ async def create_summary(payload: ResumePayloadSchema) -> ResumeResponseSchema:
         }
     return response_object
 
-@router.get("/{id}/", response_model=ResumeSchema   )
-async def read_resume(id: int) -> ResumeSchema  :
+@router.get("/{id}/", response_model=ResumeSchema)
+async def read_resume(id: int) -> ResumeSchema:
     resume = await resumes.get(id)
     if not resume:
         raise HTTPException(status_code=404, detail="Resume not found")
 
     return resume
+
+@router.get("/", response_model=List[ResumeSchema])
+async def read_all_resumes() -> List[ResumeSchema]:
+    return await resumes.get_all()

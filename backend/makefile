@@ -1,3 +1,5 @@
+k?=test
+
 up:
 	docker-compose up
 
@@ -8,7 +10,7 @@ psql:
 	docker-compose exec web-db psql -U postgres
 
 test:
-	docker-compose exec web python -m pytest -vvl
+	docker-compose exec web python -m pytest -vvl -k $(k)
 
 initdb:
 	docker-compose exec web python app/db.py
