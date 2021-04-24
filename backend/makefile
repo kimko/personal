@@ -9,3 +9,6 @@ psql:
 
 test:
 	docker-compose exec web python -m pytest
+
+initdb:
+	docker-compose exec web python app/db.py
