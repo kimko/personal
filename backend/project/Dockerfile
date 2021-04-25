@@ -13,8 +13,8 @@ RUN apt-get update \
   && apt-get clean
 
 RUN pip install --upgrade pip
-COPY ./requirements.txt .
-RUN pip install -r requirements.txt
+COPY ./requirements .
+RUN pip install -r requirements
 
 COPY . .
 COPY ./entrypoint.sh .

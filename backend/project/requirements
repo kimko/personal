@@ -1,9 +1,8 @@
 asyncpg==0.22.0
+Faker==8.1.1
 fastapi==0.63.0
+pytest==6.2.2
+pytest-cov==2.11.1
 requests==2.25.1
 tortoise-orm==0.16.21
 uvicorn==0.13.4
-
-# move to _dev.txt
-pytest==6.2.2
-Faker==8.1.1

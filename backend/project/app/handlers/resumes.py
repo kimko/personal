@@ -10,7 +10,7 @@ from app.models.resume import ResumePayloadSchema, ResumeResponseSchema, ResumeS
 router = APIRouter()
 
 @router.post("/", response_model=ResumeResponseSchema, status_code=201)
-async def create_summary(payload: ResumePayloadSchema) -> ResumeResponseSchema:
+async def create_resume(payload: ResumePayloadSchema) -> ResumeResponseSchema:
     resume_id = await resumes.post(payload)
 
     # TODO: this just returns the payload right now
