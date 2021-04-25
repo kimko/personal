@@ -1,4 +1,4 @@
-K?=test
+k?=test
 
 up:
 	docker-compose up
@@ -19,7 +19,16 @@ psql:
 	docker-compose exec web-db psql -U postgres
 
 test:
-	docker-compose exec web python -m pytest -vvl -k $(K)
+ifeq ($(k),cov)
+	@echo "ALL TESTS WITH COVERAGE"
+	docker-compose exec web python -m pytest --cov="." --cov-report html
+else
+	@echo "VERBOSE WITH PATTERN $(k)"
+	docker-compose exec web python -m pytest -vvl -k $(k)
+endif
 
 initdb:
 	docker-compose exec web python app/db.py
+
+initdb-prod:
+	heroku run python app/db.py --app $(HEROKU_APP)
