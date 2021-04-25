@@ -1,14 +1,13 @@
 import logging
 
 from fastapi import FastAPI
-from tortoise.contrib.fastapi import register_tortoise
 
-from app.handlers import ping, resumes
 from app.db import init_db
-
+from app.handlers import ping, resumes
 
 log = logging.getLogger("uvicorn")
 # TODO log level?
+
 
 def create_application() -> FastAPI:
     application = FastAPI()

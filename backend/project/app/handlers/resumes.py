@@ -1,13 +1,13 @@
-from datetime import datetime
 from typing import List
 
 from fastapi import APIRouter, HTTPException
 
 from app.controllers import resumes
-from app.models.resume import ResumePayloadSchema, ResumeResponseSchema, ResumeSchema
-
+from app.models.resume import (ResumePayloadSchema, ResumeResponseSchema,
+                               ResumeSchema)
 
 router = APIRouter()
+
 
 @router.post("/", response_model=ResumeResponseSchema, status_code=201)
 async def create_resume(payload: ResumePayloadSchema) -> ResumeResponseSchema:
@@ -22,8 +22,9 @@ async def create_resume(payload: ResumePayloadSchema) -> ResumeResponseSchema:
         # "email": str,
         # "phone": str,
         # "created_at": datetime,
-        }
+    }
     return response_object
+
 
 @router.get("/{id}/", response_model=ResumeSchema)
 async def read_resume(id: int) -> ResumeSchema:
@@ -32,6 +33,7 @@ async def read_resume(id: int) -> ResumeSchema:
         raise HTTPException(status_code=404, detail="Resume not found")
 
     return resume
+
 
 @router.get("/", response_model=List[ResumeSchema])
 async def read_all_resumes() -> List[ResumeSchema]:

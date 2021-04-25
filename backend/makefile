@@ -32,3 +32,8 @@ initdb:
 
 initdb-prod:
 	heroku run python app/db.py --app $(HEROKU_APP)
+
+lint:
+	docker-compose exec web flake8 .
+	docker-compose exec web black . --check
+	docker-compose exec web isort . --check-only
