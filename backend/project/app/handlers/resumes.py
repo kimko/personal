@@ -3,8 +3,7 @@ from typing import List
 from fastapi import APIRouter, HTTPException
 
 from app.controllers import resumes
-from app.models.resume import (ResumePayloadSchema, ResumeResponseSchema,
-                               ResumeSchema)
+from app.models.resume import ResumePayloadSchema, ResumeResponseSchema, ResumeSchema
 
 router = APIRouter()
 
