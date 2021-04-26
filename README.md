@@ -18,7 +18,7 @@ Single page react app. Bootstrapped with [Create React App](https://github.com/f
 - [ ] authentication
 - [ ] content managment console
 
-## Backed
+## Backend
 
 Microservice that stores data for the front-end. This service just provides data. No backend-rendering.
 

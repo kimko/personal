@@ -37,3 +37,14 @@ async def read_resume(id: int) -> ResumeSchema:
 @router.get("/", response_model=List[ResumeSchema])
 async def read_all_resumes() -> List[ResumeSchema]:
     return await resumes.get_all()
+
+
+@router.delete("/{id}/", response_model=ResumeResponseSchema)
+async def delete_resume(id: int) -> ResumeResponseSchema:
+    resume = await resumes.get(id)
+    if not resume:
+        raise HTTPException(status_code=404, detail="Resume not found")
+
+    await resumes.delete(id)
+
+    return resume

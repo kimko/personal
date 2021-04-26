@@ -22,6 +22,11 @@ async def get(id: int) -> Union[dict, None]:
     return None
 
 
+async def delete(id: int) -> dict:
+    resume = await Resume.filter(id=id).first().delete()
+    return resume
+
+
 async def get_all() -> List:
     resumes = await Resume.all().values()
     return resumes

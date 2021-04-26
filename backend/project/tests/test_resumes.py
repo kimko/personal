@@ -92,3 +92,34 @@ def test_read_all_resumes_200(test_app_with_db):
 
     response_list = response.json()
     assert len(list(filter(lambda d: d["id"] == resume_id, response_list))) == 1
+
+
+def test_remove_resume_200(test_app_with_db):
+    payload = json.dumps(
+        {
+            "title": job,
+            "shortDescription": text,
+            "name": name,
+            "email": email,
+            "phone": phone_number,
+        }
+    )
+    response = test_app_with_db.post("/resumes/", data=payload)
+    resume_id = response.json()["id"]
+
+    response = test_app_with_db.delete(f"/resumes/{resume_id}/")
+    assert response.status_code == 200
+    assert response.json() == {
+        "id": resume_id,
+        "title": job,
+        "shortDescription": text,
+        "name": name,
+        "email": email,
+        "phone": phone_number,
+    }
+
+
+def test_remove_resume_404_incorrect_id(test_app_with_db):
+    response = test_app_with_db.delete("/resumes/999/")
+    assert response.status_code == 404
+    assert response.json()["detail"] == "Resume not found"
