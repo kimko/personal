@@ -103,6 +103,27 @@ def test_remove_resume_200(test_app_with_db):
     assert response.json() == payload | {"id": resume_id}
 
 
+def test_remove_resumes_200_flag(test_app_with_db):
+    payload = generate_payload()
+    response = test_app_with_db.post("/resumes/", data=jdumps(payload), headers=HEADERS)
+
+    response = test_app_with_db.delete("/resumes/?delete_all=false", headers=HEADERS)
+    assert response.status_code == 200
+    assert response.json() == {
+        "message": "Nothing deleted. Set query parameter 'delete_all'",
+        "deleted": 0,
+    }
+
+
+def test_remove_resumes_200_delete_all(test_app_with_db):
+    payload = generate_payload()
+    response = test_app_with_db.post("/resumes/", data=jdumps(payload), headers=HEADERS)
+
+    response = test_app_with_db.delete("/resumes/?delete_all=true", headers=HEADERS)
+    assert response.status_code == 200
+    assert response.json()["deleted"] > 0
+
+
 def test_remove_resume_404_incorrect_id(test_app_with_db):
     response = test_app_with_db.delete("/resumes/999/", headers=HEADERS)
     assert response.status_code == 404

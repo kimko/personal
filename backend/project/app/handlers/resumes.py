@@ -58,3 +58,16 @@ async def delete_resume(id: int) -> ResumeResponseSchema:
     await resumes.delete(id)
 
     return resume
+
+
+@router.delete("/", dependencies=[Depends(verify_token)])
+async def delete_resumes(delete_all: bool = False) -> dict:
+    if not delete_all:
+        return {
+            "message": "Nothing deleted. Set query parameter 'delete_all'",
+            "deleted": 0,
+        }
+
+    count = await resumes.delete()
+
+    return {"message": f"Deleted {count} resumes", "deleted": count}
