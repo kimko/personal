@@ -1,6 +1,9 @@
+import logging
 from typing import List, Union
 
 from app.models.resume import Resume, ResumePayloadSchema
+
+log = logging.getLogger("uvicorn")
 
 
 async def post(payload: ResumePayloadSchema) -> int:

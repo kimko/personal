@@ -3,6 +3,9 @@ k?=test
 up:
 	docker-compose up
 
+upnew:
+	docker-compose up  --force-recreate
+
 build:
 	docker-compose build
 
