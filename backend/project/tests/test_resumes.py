@@ -1,39 +1,24 @@
-import json
+from json import dumps as jdumps
 
-from tests.factory import email, job, name, phone_number, text
+from tests.factory import generate_payload
 
 HEADERS = {"x-token": "good token"}
 
 
 def test_create_resumes_201(test_app_with_db):
-    payload = json.dumps(
-        {
-            "title": job,
-            "shortDescription": text,
-            "name": name,
-            "email": email,
-            "phone": phone_number,
-        }
-    )
-    response = test_app_with_db.post("/resumes/", data=payload, headers=HEADERS)
+    payload = generate_payload()
+    response = test_app_with_db.post("/resumes/", data=jdumps(payload), headers=HEADERS)
 
     assert response.status_code == 201
     assert "id" in response.json()
-    assert response.json()["title"] == job
-    assert response.json()["name"] == name
+    assert response.json()["title"] == payload["title"]
+    assert response.json()["name"] == payload["name"]
 
 
 def test_create_resumes_422_invalid_json(test_app):
-    payload = json.dumps(
-        {
-            # "title": job,
-            "shortDescription": text,
-            "name": name,
-            "email": email,
-            "phone": phone_number,
-        }
-    )
-    response = test_app.post("/resumes/", data=payload)
+    payload = generate_payload()
+    bad_payload = {key: payload[key] for key in payload if key != "title"}
+    response = test_app.post("/resumes/", data=jdumps(bad_payload))
     assert response.status_code == 422
     assert response.json() == {
         "detail": [
@@ -52,31 +37,16 @@ def test_create_resumes_422_invalid_json(test_app):
 
 
 def test_create_resumes_401_invalid_token(test_app):
-    payload = json.dumps(
-        {
-            "title": job,
-            "shortDescription": text,
-            "name": name,
-            "email": email,
-            "phone": phone_number,
-        }
+    response = test_app.post(
+        "/resumes/", data=jdumps(generate_payload()), headers={"x-token": "wrong"}
     )
-    response = test_app.post("/resumes/", data=payload, headers={"x-token": "wrong"})
     assert response.status_code == 401
     assert response.json() == {"detail": "X-Token header invalid"}
 
 
 def test_read_resume_200(test_app_with_db):
-    payload = json.dumps(
-        {
-            "title": job,
-            "shortDescription": text,
-            "name": name,
-            "email": email,
-            "phone": phone_number,
-        }
-    )
-    response = test_app_with_db.post("/resumes/", data=payload, headers=HEADERS)
+    payload = generate_payload()
+    response = test_app_with_db.post("/resumes/", data=jdumps(payload), headers=HEADERS)
     resume_id = response.json()["id"]
 
     response = test_app_with_db.get(f"/resumes/{resume_id}/", headers=HEADERS)
@@ -84,8 +54,8 @@ def test_read_resume_200(test_app_with_db):
 
     response_dict = response.json()
     assert response_dict["id"] == resume_id
-    assert response_dict["title"] == job
-    assert response_dict["name"] == name
+    assert response_dict["title"] == payload["title"]
+    assert response_dict["name"] == payload["name"]
     assert response_dict["created_at"]
 
 
@@ -111,16 +81,9 @@ def test_read_resume_404_not_found(test_app_with_db):
 
 
 def test_read_all_resumes_200(test_app_with_db):
-    payload = json.dumps(
-        {
-            "title": job,
-            "shortDescription": text,
-            "name": name,
-            "email": email,
-            "phone": phone_number,
-        }
+    response = test_app_with_db.post(
+        "/resumes/", data=jdumps(generate_payload()), headers=HEADERS
     )
-    response = test_app_with_db.post("/resumes/", data=payload, headers=HEADERS)
     resume_id = response.json()["id"]
 
     response = test_app_with_db.get("/resumes/", headers=HEADERS)
@@ -131,28 +94,13 @@ def test_read_all_resumes_200(test_app_with_db):
 
 
 def test_remove_resume_200(test_app_with_db):
-    payload = json.dumps(
-        {
-            "title": job,
-            "shortDescription": text,
-            "name": name,
-            "email": email,
-            "phone": phone_number,
-        }
-    )
-    response = test_app_with_db.post("/resumes/", data=payload, headers=HEADERS)
+    payload = generate_payload()
+    response = test_app_with_db.post("/resumes/", data=jdumps(payload), headers=HEADERS)
     resume_id = response.json()["id"]
 
     response = test_app_with_db.delete(f"/resumes/{resume_id}/", headers=HEADERS)
     assert response.status_code == 200
-    assert response.json() == {
-        "id": resume_id,
-        "title": job,
-        "shortDescription": text,
-        "name": name,
-        "email": email,
-        "phone": phone_number,
-    }
+    assert response.json() == payload | {"id": resume_id}
 
 
 def test_remove_resume_404_incorrect_id(test_app_with_db):
