@@ -11,6 +11,7 @@ class Settings(BaseSettings):
     environment: str = os.getenv("ENVIRONMENT", "dev")
     testing: bool = os.getenv("TESTING", 0)
     database_url: AnyUrl = os.environ.get("DATABASE_URL")
+    token: str = os.getenv("TOKEN", "42")
 
 
 @lru_cache()

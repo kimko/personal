@@ -27,6 +27,7 @@ Microservice that stores data for the front-end. This service just provides data
 * dockerized development and deployment
 * hosted on heroku
 * CI/CD with github actions
+* trival token authentication
 
 ### TODO
 

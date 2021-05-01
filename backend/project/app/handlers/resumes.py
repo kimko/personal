@@ -1,14 +1,20 @@
 from typing import List
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Depends, HTTPException
 
 from app.controllers import resumes
 from app.models.resume import ResumePayloadSchema, ResumeResponseSchema, ResumeSchema
+from app.utils.auth import verify_token
 
 router = APIRouter()
 
 
-@router.post("/", response_model=ResumeResponseSchema, status_code=201)
+@router.post(
+    "/",
+    response_model=ResumeResponseSchema,
+    status_code=201,
+    dependencies=[Depends(verify_token)],
+)
 async def create_resume(payload: ResumePayloadSchema) -> ResumeResponseSchema:
     resume_id = await resumes.post(payload)
 
@@ -25,7 +31,7 @@ async def create_resume(payload: ResumePayloadSchema) -> ResumeResponseSchema:
     return response_object
 
 
-@router.get("/{id}/", response_model=ResumeSchema)
+@router.get("/{id}/", response_model=ResumeSchema, dependencies=[Depends(verify_token)])
 async def read_resume(id: int) -> ResumeSchema:
     resume = await resumes.get(id)
     if not resume:
@@ -34,12 +40,16 @@ async def read_resume(id: int) -> ResumeSchema:
     return resume
 
 
-@router.get("/", response_model=List[ResumeSchema])
+@router.get(
+    "/", response_model=List[ResumeSchema], dependencies=[Depends(verify_token)]
+)
 async def read_all_resumes() -> List[ResumeSchema]:
     return await resumes.get_all()
 
 
-@router.delete("/{id}/", response_model=ResumeResponseSchema)
+@router.delete(
+    "/{id}/", response_model=ResumeResponseSchema, dependencies=[Depends(verify_token)]
+)
 async def delete_resume(id: int) -> ResumeResponseSchema:
     resume = await resumes.get(id)
     if not resume:
