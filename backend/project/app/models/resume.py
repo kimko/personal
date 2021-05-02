@@ -1,6 +1,6 @@
 from typing import Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from tortoise import fields, models
 from tortoise.contrib.pydantic import pydantic_model_creator
 
@@ -11,7 +11,7 @@ class ResumePayloadSchema(BaseModel):
     name: str
     email: Optional[str] = ""
     phone: Optional[str] = ""
-    public_id: str
+    public_id: str = Field(max_length=6)
 
 
 class ResumeResponseSchema(ResumePayloadSchema):

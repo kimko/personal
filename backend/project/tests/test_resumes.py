@@ -32,22 +32,25 @@ def test_create_resumes_422_public_id_not_unique(test_app_with_db):
 def test_create_resumes_422_invalid_json(test_app):
     payload = generate_payload()
     bad_payload = {key: payload[key] for key in payload if key != "title"}
+    bad_payload["public_id"] = "this_is_too_long"
     response = test_app.post("/resumes/", data=jdumps(bad_payload))
     assert response.status_code == 422
-    assert response.json() == {
-        "detail": [
-            {
-                "loc": ["header", "x-token"],
-                "msg": "field required",
-                "type": "value_error.missing",
-            },
-            {
-                "loc": ["body", "title"],
-                "msg": "field required",
-                "type": "value_error.missing",
-            },
-        ]
-    }
+    assert {
+        "loc": ["header", "x-token"],
+        "msg": "field required",
+        "type": "value_error.missing",
+    } in response.json()["detail"]
+    assert {
+        "loc": ["body", "public_id"],
+        "msg": "ensure this value has at most 6 characters",
+        "type": "value_error.any_str.max_length",
+        "ctx": {"limit_value": 6},
+    } in response.json()["detail"]
+    assert {
+        "loc": ["body", "title"],
+        "msg": "field required",
+        "type": "value_error.missing",
+    } in response.json()["detail"]
 
 
 def test_create_resumes_401_invalid_token(test_app):

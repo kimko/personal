@@ -4,5 +4,6 @@ omit =
     app/config.py
     app/db.py
     app/main.py
+    app/models/db.py
 
 branch = True
