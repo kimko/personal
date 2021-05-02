@@ -25,10 +25,8 @@ def test_create_resumes_422_public_id_not_unique(test_app_with_db):
     response = test_app_with_db.post("/resumes/", data=jdumps(payload), headers=HEADERS)
 
     assert response.status_code == 422
-    assert (
-        "duplicate key value violates unique constraint"
-        in response.json()["detail"][0]["msg"]
-    )
+    # TODO upgrade GHA container to py3.9
+    assert "unique constraint" in response.json()["detail"][0]["msg"].lower()
 
 
 def test_create_resumes_422_invalid_json(test_app):
@@ -116,7 +114,9 @@ def test_remove_resume_200(test_app_with_db):
 
     response = test_app_with_db.delete(f"/resumes/{resume_id}/", headers=HEADERS)
     assert response.status_code == 200
-    assert response.json() == payload | {"id": resume_id}
+    # TODO upgrade GHA container to py3.9
+    # assert response.json() == payload | {"id": resume_id}
+    assert response.json() == {**payload, **{"id": resume_id}}
 
 
 def test_remove_resumes_200_flag(test_app_with_db):
