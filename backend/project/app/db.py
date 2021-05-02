@@ -15,6 +15,15 @@ TORTOISE_ORM = {
         },
     },
 }
+TORTOISE_ORM_TEST = {
+    "connections": {"default": os.environ.get("DATABASE_TEST_URL")},
+    "apps": {
+        "models": {
+            "models": ["app.models.resume", "aerich.models"],
+            "default_connection": "default",
+        },
+    },
+}
 
 
 def init_db(app: FastAPI) -> None:

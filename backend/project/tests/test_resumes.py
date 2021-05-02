@@ -6,6 +6,8 @@ HEADERS = {"x-token": "good token"}
 
 
 def test_create_resumes_201(test_app_with_db):
+    # TODO this delete should not be necessary. remove all records on teardown
+    response = test_app_with_db.delete("/resumes/?delete_all=true", headers=HEADERS)
     payload = generate_payload()
     response = test_app_with_db.post("/resumes/", data=jdumps(payload), headers=HEADERS)
 
@@ -13,6 +15,20 @@ def test_create_resumes_201(test_app_with_db):
     assert "id" in response.json()
     assert response.json()["title"] == payload["title"]
     assert response.json()["name"] == payload["name"]
+
+
+def test_create_resumes_422_public_id_not_unique(test_app_with_db):
+    # TODO this delete should not be necessary. remove all records on teardown
+    response = test_app_with_db.delete("/resumes/?delete_all=true", headers=HEADERS)
+    payload = generate_payload()
+    response = test_app_with_db.post("/resumes/", data=jdumps(payload), headers=HEADERS)
+    response = test_app_with_db.post("/resumes/", data=jdumps(payload), headers=HEADERS)
+
+    assert response.status_code == 422
+    assert (
+        "duplicate key value violates unique constraint"
+        in response.json()["detail"][0]["msg"]
+    )
 
 
 def test_create_resumes_422_invalid_json(test_app):

@@ -13,6 +13,7 @@ async def post(payload: ResumePayloadSchema) -> int:
         name=payload.name,
         email=payload.email,
         phone=payload.phone,
+        public_id=payload.public_id,
     )
     await resume.save()
     return resume.id

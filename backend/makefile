@@ -43,6 +43,12 @@ initdb:
 initdb-prod:
 	heroku run python app/db.py --app $(HEROKU_APP)
 
+migrate-test:
+	docker-compose exec web aerich -c aerich_test.ini upgrade
+
+migrate:
+	docker-compose exec web aerich upgrade
+
 lint:
 	docker-compose exec web flake8 .
 	docker-compose exec web black . --check

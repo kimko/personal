@@ -10,6 +10,7 @@ def generate_payload():
     text = factory.text()
     phone_number = factory.phone_number()
     email = factory.email()
+    public_id = factory.text(6)
 
     return {
         "title": job,
@@ -17,4 +18,5 @@ def generate_payload():
         "name": name,
         "email": email,
         "phone": phone_number,
+        "public_id": public_id,
     }
