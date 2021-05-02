@@ -17,14 +17,11 @@ build-gha:
 	docker login docker.pkg.github.com -u kimko -p $(GHA_TOKEN)
 	docker push docker.pkg.github.com/kimko/personal/backend:latest
 
-deploy-prod:
-	heroku container:login
-	docker push registry.heroku.com/$(HEROKU_APP)/web:latest
-	heroku container:release web --app $(HEROKU_APP)
-	heroku logs --tail
-
-psql:
+psql-dev:
 	docker-compose exec web-db psql -U postgres
+
+psql-prod:
+	 heroku pg:psql
 
 test:
 ifeq ($(k),cov)
@@ -37,17 +34,14 @@ else
 	docker-compose exec web python -m pytest -vvl -k $(k)
 endif
 
-initdb:
-	docker-compose exec web python app/db.py
-
-initdb-prod:
-	heroku run python app/db.py --app $(HEROKU_APP)
-
 migrate-test:
 	docker-compose exec web aerich -c aerich_test.ini upgrade
 
-migrate:
+migrate-dev:
 	docker-compose exec web aerich upgrade
+
+migrate-prod:
+	heroku run python app/models/db.py migrate
 
 lint:
 	docker-compose exec web flake8 .
