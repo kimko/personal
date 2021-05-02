@@ -14,7 +14,7 @@ def generate_payload():
 
     return {
         "title": job,
-        "shortDescription": text,
+        "short_description": text,
         "name": name,
         "email": email,
         "phone": phone_number,

@@ -9,7 +9,7 @@ log = logging.getLogger("uvicorn")
 async def post(payload: ResumePayloadSchema) -> int:
     resume = Resume(
         title=payload.title,
-        shortDescription=payload.shortDescription,
+        short_description=payload.short_description,
         name=payload.name,
         email=payload.email,
         phone=payload.phone,

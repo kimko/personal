@@ -34,13 +34,15 @@ else
 	docker-compose exec web python -m pytest -vvl -k $(k)
 endif
 
-migrate-test:
+migrate:
+	docker-compose exec web aerich migrate
+
+upgrade-dev:
+	docker-compose exec web aerich upgrade
 	docker-compose exec web aerich -c aerich_test.ini upgrade
 
-migrate-dev:
-	docker-compose exec web aerich upgrade
 
-migrate-prod:
+upgrade-prod:
 	heroku run python app/models/db.py migrate
 
 lint:

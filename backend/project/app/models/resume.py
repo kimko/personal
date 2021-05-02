@@ -7,7 +7,7 @@ from tortoise.contrib.pydantic import pydantic_model_creator
 
 class ResumePayloadSchema(BaseModel):
     title: str
-    shortDescription: Optional[str] = ""
+    short_description: Optional[str] = ""
     name: str
     email: Optional[str] = ""
     phone: Optional[str] = ""
@@ -20,7 +20,7 @@ class ResumeResponseSchema(ResumePayloadSchema):
 
 class Resume(models.Model):
     title = fields.TextField()
-    shortDescription = fields.TextField()
+    short_description = fields.TextField()
     name = fields.TextField()
     email = fields.TextField()
     phone = fields.TextField()
