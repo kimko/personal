@@ -37,6 +37,11 @@ endif
 migrate:
 	docker-compose exec web aerich migrate
 
+init-dev:
+	docker-compose exec web aerich init -t db.TORTOISE_ORM
+	docker-compose exec web aerich upgrade
+	docker-compose exec web aerich -c aerich_test.ini upgrade
+
 upgrade-dev:
 	docker-compose exec web aerich upgrade
 	docker-compose exec web aerich -c aerich_test.ini upgrade
