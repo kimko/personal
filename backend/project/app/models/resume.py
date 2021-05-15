@@ -12,6 +12,7 @@ class ResumePayloadSchema(BaseModel):
     email: Optional[str] = ""
     phone: Optional[str] = ""
     public_id: str = Field(max_length=6)
+    summary: list
 
 
 class ResumeResponseSchema(ResumePayloadSchema):
@@ -26,6 +27,7 @@ class Resume(models.Model):
     phone = fields.TextField()
     created_at = fields.DatetimeField(auto_now_add=True)
     public_id = fields.CharField(unique=True, max_length=6)
+    summary = fields.JSONField()
 
 
 ResumeSchema = pydantic_model_creator(Resume)

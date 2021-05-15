@@ -15,6 +15,7 @@ def test_create_resumes_201(test_app_with_db):
     assert "id" in response.json()
     assert response.json()["title"] == payload["title"]
     assert response.json()["name"] == payload["name"]
+    assert response.json()["summary"] == payload["summary"]
 
 
 def test_create_resumes_422_public_id_not_unique(test_app_with_db):
@@ -73,6 +74,7 @@ def test_read_resume_200(test_app_with_db):
     assert response_dict["id"] == resume_id
     assert response_dict["title"] == payload["title"]
     assert response_dict["name"] == payload["name"]
+    assert response_dict["summary"] == payload["summary"]
     assert response_dict["created_at"]
 
 

@@ -19,4 +19,5 @@ def generate_payload():
         "email": email,
         "phone": phone_number,
         "public_id": public_id,
+        "summary": factory.words(5),
     }
