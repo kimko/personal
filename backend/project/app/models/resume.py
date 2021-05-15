@@ -12,7 +12,7 @@ class ResumePayloadSchema(BaseModel):
     email: Optional[str] = ""
     phone: Optional[str] = ""
     public_id: str = Field(max_length=6)
-    summary: list
+    summary: Optional[list] = []
 
 
 class ResumeResponseSchema(ResumePayloadSchema):
