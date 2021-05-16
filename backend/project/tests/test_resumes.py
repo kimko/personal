@@ -16,6 +16,7 @@ def test_create_resumes_201(test_app_with_db):
     assert response.json()["title"] == payload["title"]
     assert response.json()["name"] == payload["name"]
     assert response.json()["summary"] == payload["summary"]
+    assert response.json()["jobs"] == payload["jobs"]
 
 
 def test_create_resumes_201_no_optional_values(test_app_with_db):
@@ -76,6 +77,9 @@ def test_create_resumes_401_invalid_token(test_app):
 
 
 def test_read_resume_200(test_app_with_db):
+    # TODO this delete should not be necessary. remove all records on teardown
+    response = test_app_with_db.delete("/resumes/?delete_all=true", headers=HEADERS)
+
     payload = generate_payload()
     response = test_app_with_db.post("/resumes/", data=jdumps(payload), headers=HEADERS)
     resume_id = response.json()["id"]
@@ -88,6 +92,7 @@ def test_read_resume_200(test_app_with_db):
     assert response_dict["title"] == payload["title"]
     assert response_dict["name"] == payload["name"]
     assert response_dict["summary"] == payload["summary"]
+    assert response_dict["jobs"] == payload["jobs"]
     assert response_dict["created_at"]
 
 

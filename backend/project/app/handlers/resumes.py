@@ -29,6 +29,7 @@ async def create_resume(payload: ResumePayloadSchema) -> ResumeResponseSchema:
         # "created_at": datetime,
         "public_id": payload.public_id,
         "summary": payload.summary,
+        "jobs": payload.jobs,
     }
     return response_object
 
