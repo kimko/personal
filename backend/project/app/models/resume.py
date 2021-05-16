@@ -16,6 +16,10 @@ class ResumePayloadSchema(BaseModel):
     jobs: Optional[list] = []  # TODO schema validation
 
 
+class GenerateRandomPayloadSchema(BaseModel):
+    public_id: str = Field(max_length=6)
+
+
 class ResumeResponseSchema(ResumePayloadSchema):
     id: int
 

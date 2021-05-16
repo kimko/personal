@@ -1,6 +1,6 @@
 from json import dumps as jdumps
 
-from tests.factory import generate_payload
+from app.utils.factory import generate_payload
 
 HEADERS = {"x-token": "good token"}
 
@@ -167,3 +167,17 @@ def test_remove_resume_404_incorrect_id(test_app_with_db):
     response = test_app_with_db.delete("/resumes/999/", headers=HEADERS)
     assert response.status_code == 404
     assert response.json()["detail"] == "Resume not found"
+
+
+def test_generate_random_resume_201(test_app_with_db):
+    # TODO this delete should not be necessary. remove all records on teardown
+    response = test_app_with_db.delete("/resumes/?delete_all=true", headers=HEADERS)
+    response = test_app_with_db.post(
+        "/resumes/random?public_id=123456", headers=HEADERS
+    )
+
+    assert response.status_code == 201
+    assert "id" in response.json()
+    assert "title" in response.json()
+    assert "jobs" in response.json()
+    assert response.json()["public_id"] == "123456"

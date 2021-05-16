@@ -1,3 +1,4 @@
+import logging
 from typing import List
 
 from fastapi import APIRouter, Depends, HTTPException
@@ -7,6 +8,7 @@ from app.models.resume import ResumePayloadSchema, ResumeResponseSchema, ResumeS
 from app.utils.auth import verify_token
 
 router = APIRouter()
+log = logging.getLogger("uvicorn")
 
 
 @router.post(
@@ -32,6 +34,18 @@ async def create_resume(payload: ResumePayloadSchema) -> ResumeResponseSchema:
         "jobs": payload.jobs,
     }
     return response_object
+
+
+@router.post(
+    "/random",
+    response_model=ResumeSchema,
+    status_code=201,
+    dependencies=[Depends(verify_token)],
+)
+async def generate_random(public_id: str) -> ResumeSchema:
+    log.info(f"Generate Random {public_id}")
+    resume = await resumes.generate_random(public_id)
+    return resume
 
 
 @router.get("/{id}/", response_model=ResumeSchema, dependencies=[Depends(verify_token)])

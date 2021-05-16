@@ -5,6 +5,7 @@ Faker==8.1.1
 fastapi==0.63.0
 flake8===3.8.4
 isort==5.7.0
+ipdb==0.13.7
 pytest==6.2.2
 pytest-cov==2.11.1
 requests==2.25.1

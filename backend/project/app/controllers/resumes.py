@@ -2,6 +2,7 @@ import logging
 from typing import List, Union
 
 from app.models.resume import Resume, ResumePayloadSchema
+from app.utils.factory import generate_payload
 
 log = logging.getLogger("uvicorn")
 
@@ -19,6 +20,14 @@ async def post(payload: ResumePayloadSchema) -> int:
     )
     await resume.save()
     return resume.id
+
+
+async def generate_random(public_id: str) -> Resume:
+    random = generate_payload()
+    random["public_id"] = public_id
+    resume = Resume(**random)
+    await resume.save()
+    return resume
 
 
 async def get(id: int) -> Union[dict, None]:
