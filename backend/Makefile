@@ -26,6 +26,7 @@ psql-prod:
 test:
 ifeq ($(k),cov)
 	@echo "ALL TESTS WITH COVERAGE"
+	docker-compose exec web flake8 .
 	docker-compose exec web black .
 	docker-compose exec web isort . --profile black
 	docker-compose exec web python -m pytest --cov="." --cov-report html

@@ -30,8 +30,11 @@ async def generate_random(public_id: str) -> Resume:
     return resume
 
 
-async def get(id: int) -> Union[dict, None]:
-    resume = await Resume.filter(id=id).first().values()
+async def get(**kwargs) -> Union[dict, None]:
+    if "public_id" in kwargs:
+        resume = await Resume.filter(public_id=kwargs["public_id"]).first().values()
+    else:
+        resume = await Resume.filter(id=kwargs["id"]).first().values()
     if resume:
         return resume[0]
     return None

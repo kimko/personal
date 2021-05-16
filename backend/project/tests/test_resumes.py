@@ -96,6 +96,26 @@ def test_read_resume_200(test_app_with_db):
     assert response_dict["created_at"]
 
 
+def test_read_resume_public_200(test_app_with_db):
+    # TODO this delete should not be necessary. remove all records on teardown
+    response = test_app_with_db.delete("/resumes/?delete_all=true", headers=HEADERS)
+
+    payload = generate_payload()
+    response = test_app_with_db.post("/resumes/", data=jdumps(payload), headers=HEADERS)
+    public_id = response.json()["public_id"]
+
+    response = test_app_with_db.get(f"/resumes/public/{public_id}/", headers=HEADERS)
+    assert response.status_code == 200
+
+    response_dict = response.json()
+    assert response_dict["public_id"] == public_id
+    assert response_dict["title"] == payload["title"]
+    assert response_dict["name"] == payload["name"]
+    assert response_dict["summary"] == payload["summary"]
+    assert response_dict["jobs"] == payload["jobs"]
+    assert response_dict["created_at"]
+
+
 def test_read_resume_422_missing_token(test_app):
     response = test_app.get("/resumes/")
     assert response.status_code == 422

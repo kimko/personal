@@ -50,7 +50,16 @@ async def generate_random(public_id: str) -> ResumeSchema:
 
 @router.get("/{id}/", response_model=ResumeSchema, dependencies=[Depends(verify_token)])
 async def read_resume(id: int) -> ResumeSchema:
-    resume = await resumes.get(id)
+    resume = await resumes.get(id=id)
+    if not resume:
+        raise HTTPException(status_code=404, detail="Resume not found")
+
+    return resume
+
+
+@router.get("/public/{public_id}/", response_model=ResumeSchema)
+async def read_resume_public(public_id: str) -> ResumeSchema:
+    resume = await resumes.get(public_id=public_id)
     if not resume:
         raise HTTPException(status_code=404, detail="Resume not found")
 
@@ -68,7 +77,7 @@ async def read_all_resumes() -> List[ResumeSchema]:
     "/{id}/", response_model=ResumeResponseSchema, dependencies=[Depends(verify_token)]
 )
 async def delete_resume(id: int) -> ResumeResponseSchema:
-    resume = await resumes.get(id)
+    resume = await resumes.get(id=id)
     if not resume:
         raise HTTPException(status_code=404, detail="Resume not found")
 
