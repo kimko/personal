@@ -19,7 +19,7 @@ def generate_job(experience, tools):
     }
 
 
-def generate_payload(jobs=2, experience=4, tools=4):
+def generate_payload(jobs=2, experience=2, tools=4, skills=5):
     return {
         "title": f.job(),
         "short_description": f.text(),
@@ -29,4 +29,5 @@ def generate_payload(jobs=2, experience=4, tools=4):
         "public_id": f.text(6),
         "summary": f.words(5),
         "jobs": [generate_job(experience, tools) for _ in range(0, jobs)],
+        "skills": {f.word(): f.words(f.random_digit() + 2) for _ in range(0, skills)},
     }

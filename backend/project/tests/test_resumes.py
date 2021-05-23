@@ -17,6 +17,7 @@ def test_create_resumes_201(test_app_with_db):
     assert response.json()["name"] == payload["name"]
     assert response.json()["summary"] == payload["summary"]
     assert response.json()["jobs"] == payload["jobs"]
+    assert response.json()["skills"] == payload["skills"]
 
 
 def test_create_resumes_201_no_optional_values(test_app_with_db):
@@ -93,6 +94,7 @@ def test_read_resume_200(test_app_with_db):
     assert response_dict["name"] == payload["name"]
     assert response_dict["summary"] == payload["summary"]
     assert response_dict["jobs"] == payload["jobs"]
+    assert response_dict["skills"] == payload["skills"]
     assert response_dict["created_at"]
 
 
@@ -113,6 +115,7 @@ def test_read_resume_public_200(test_app_with_db):
     assert response_dict["name"] == payload["name"]
     assert response_dict["summary"] == payload["summary"]
     assert response_dict["jobs"] == payload["jobs"]
+    assert response_dict["skills"] == payload["skills"]
     assert response_dict["created_at"]
 
 

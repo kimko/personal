@@ -17,6 +17,7 @@ async def post(payload: ResumePayloadSchema) -> int:
         public_id=payload.public_id,
         summary=payload.summary,
         jobs=payload.jobs,
+        skills=payload.skills,
     )
     await resume.save()
     return resume.id

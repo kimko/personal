@@ -14,6 +14,7 @@ class ResumePayloadSchema(BaseModel):
     public_id: str = Field(max_length=6)
     summary: Optional[list] = []
     jobs: Optional[list] = []  # TODO schema validation
+    skills: Optional[dict] = []  # TODO schema validation
 
 
 class GenerateRandomPayloadSchema(BaseModel):
@@ -34,6 +35,7 @@ class Resume(models.Model):
     public_id = fields.CharField(unique=True, max_length=6)
     summary = fields.JSONField()
     jobs = fields.JSONField()
+    skills = fields.JSONField()
 
 
 ResumeSchema = pydantic_model_creator(Resume)
