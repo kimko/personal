@@ -11,7 +11,7 @@ class ResumePayloadSchema(BaseModel):
     name: str
     email: Optional[str] = ""
     phone: Optional[str] = ""
-    public_id: str = Field(max_length=6)
+    public_id: str = Field(max_length=20)
     summary: Optional[list] = []
     jobs: Optional[list] = []  # TODO schema validation
     skills: Optional[dict] = []  # TODO schema validation
@@ -32,7 +32,7 @@ class Resume(models.Model):
     email = fields.TextField()
     phone = fields.TextField()
     created_at = fields.DatetimeField(auto_now_add=True)
-    public_id = fields.CharField(unique=True, max_length=6)
+    public_id = fields.CharField(unique=True, max_length=20)
     summary = fields.JSONField()
     jobs = fields.JSONField()
     skills = fields.JSONField()
