@@ -18,8 +18,9 @@ export const Cv = (props) => {
   useEffect(() => {
     (async () => {
       try {
+        // TODO! config!!!
         const response = await axios.get(
-          "http://localhost:8004/resumes/public/dflt/",
+          "https://kimko-personal-backend.herokuapp.com/resumes/public/default/",
         );
         setContent(response.data);
         setShowInfo(false);
