@@ -6,7 +6,6 @@ env:
   IMAGE: docker.pkg.github.com/$(echo $GITHUB_REPOSITORY | tr '[A-Z]' '[a-z]')/backend
 
 jobs:
-
   build:
     name: Build Docker Image
     runs-on: ubuntu-latest

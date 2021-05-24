@@ -1,7 +1,7 @@
 import React, { Component, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 
-import * as cvContent from "./../content/cv";
+import { defaultContent } from "./../content/cv";
 
 export const CvPlain = (props) => {
   return (
@@ -10,17 +10,17 @@ export const CvPlain = (props) => {
         <title>CV</title>
       </head>
       <body>
-        <h2>{cvContent.title}</h2>
-        <p>{cvContent.shortDescription}</p>
+        <h2>{defaultContent.title}</h2>
+        <p>{defaultContent.short_description}</p>
         <ul>
-          {cvContent.summary.map((item, idx) => (
+          {defaultContent.summary.map((item, idx) => (
             <li key={idx} className="list pv1">
               {"• " + item}
             </li>
           ))}
         </ul>
         <h2>Experience</h2>
-        <dl>{processJobData(cvContent.jobData)}</dl>
+        <dl>{processJobData(defaultContent.jobs)}</dl>
       </body>
     </div>
   );
