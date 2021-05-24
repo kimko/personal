@@ -2,8 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export const Info = (props) => {
+  const color = props.message === 'Loading data from remote failed!' ? "red" : "yellow";
   return (
-    <div className="flex items-center justify-center pa2 bg-yellow">
+    <div className={`flex items-center justify-center pa2 bg-${color}`}>
       <svg
         className="w1"
         data-icon="info"

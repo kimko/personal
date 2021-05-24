@@ -21,6 +21,7 @@ export const Cv = (props) => {
         // TODO! config!!!
         const response = await axios.get(
           "https://kimko-personal-backend.herokuapp.com/resumes/public/default/",
+          // "http://localhost:8004/resumes/public/default/",
         );
         setContent(response.data);
         setShowInfo(false);
