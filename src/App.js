@@ -5,6 +5,7 @@ import ReactGA from "react-ga";
 
 import { Cv } from "./components/cv";
 import { CvPlain } from "./components/cvPlain";
+import { Pager } from "./components/pager";
 
 ReactGA.initialize("UA-12341234-1", { standardImplementation: true });
 // TODO useContext hook
@@ -12,7 +13,7 @@ const style = {
   // color: "#FFFF00",
   // backgroundColor: "#777777",
   color: "#000000",
-  backgroundColor: "#CCCCCC",
+  // backgroundColor: "#CCCCCC",
 };
 
 // TODO sectioning headers / article / section
@@ -34,6 +35,9 @@ function App() {
           </Route>
           <Route path="/plain">
             <CvPlain style={style} />
+          </Route>
+          <Route path="/pager">
+            <Pager style={style} />
           </Route>
           <Route path="/">
             <Cv style={style} />
