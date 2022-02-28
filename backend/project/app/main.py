@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.db import init_db
-from app.handlers import ping, resumes
+from app.handlers import or_tools_solvers, ping, resumes
 
 log = logging.getLogger("uvicorn")
 # TODO log level?
@@ -27,6 +27,9 @@ def create_application() -> FastAPI:
     )
     application.include_router(ping.router)
     application.include_router(resumes.router, prefix="/resumes", tags=["resumes"])
+    application.include_router(
+        or_tools_solvers.router, prefix="/ots", tags=["or tools solvers"]
+    )
 
     return application
 
