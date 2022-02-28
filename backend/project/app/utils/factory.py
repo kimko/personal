@@ -31,3 +31,7 @@ def generate_payload(jobs=2, experience=2, tools=4, skills=5):
         "jobs": [generate_job(experience, tools) for _ in range(0, jobs)],
         "skills": {f.word(): f.words(f.random_digit() + 2) for _ in range(0, skills)},
     }
+
+
+def generate_ots_payload():
+    return {"capacity_hours": 8, "num_vehicles": 10, "minutes_at_site": 5}
