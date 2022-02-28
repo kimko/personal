@@ -67,12 +67,12 @@ jobs:
         run: docker exec backend python app/models/db.py
       # - name: Pytest
       #   run: docker exec backend python -m pytest -vvl .
-      - name: Flake8
-        run: docker exec backend python -m flake8 .
-      - name: Black
-        run: docker exec backend python -m black . --check
-      - name: isort
-        run: docker exec backend python -m isort . --check-only --profile black
+      # - name: Flake8
+      #   run: docker exec backend python -m flake8 .
+      # - name: Black
+      #   run: docker exec backend python -m black . --check
+      # - name: isort
+      #   run: docker exec backend python -m isort . --check-only --profile black
 
   deploy:
     name: Deploy to Heroku
