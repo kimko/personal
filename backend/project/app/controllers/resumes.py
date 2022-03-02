@@ -37,7 +37,7 @@ async def get(**kwargs) -> Union[dict, None]:
     else:
         resume = await Resume.filter(id=kwargs["id"]).first().values()
     if resume:
-        return resume[0]
+        return resume
     return None
 
 
