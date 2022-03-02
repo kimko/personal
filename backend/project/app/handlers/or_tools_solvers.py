@@ -21,5 +21,5 @@ log = logging.getLogger("uvicorn")
 )
 async def solve_TSP(payload: OrToolsSolverPayloadSchema) -> OrToolsSolverResponseSchema:
     response_object = await or_tools_solvers.solve_TSP(payload)
-
-    return response_object
+    print(response_object)
+    return {"solution": response_object}
