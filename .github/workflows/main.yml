@@ -3,7 +3,7 @@ name: CI/CD
 on: [push]
 
 env:
-  IMAGE: ghcr.io/$(echo $GITHUB_REPOSITORY | tr '[A-Z]' '[a-z]')/backend
+  IMAGE: docker.pkg.github.com/$(echo $GITHUB_REPOSITORY | tr '[A-Z]' '[a-z]')/backend
 jobs:
 
   build:
@@ -11,9 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.4.0
+        with:
+          ref: main
       - name: Log in to GitHub Packages
-        run: echo ${GITHUB_TOKEN} | docker login -u ${GITHUB_ACTOR} --password-stdin ghcr.io
+        run: echo ${GITHUB_TOKEN} | docker login -u ${GITHUB_ACTOR} --password-stdin docker.pkg.github.com
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Pull image
@@ -36,9 +38,9 @@ jobs:
     needs: build
     steps:
       - name: Checkout main
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.4.0
       - name: Log in to GitHub Packages
-        run: echo ${GITHUB_TOKEN} | docker login -u ${GITHUB_ACTOR} --password-stdin ghcr.io
+        run: echo ${GITHUB_TOKEN} | docker login -u ${GITHUB_ACTOR} --password-stdin docker.pkg.github.com
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Pull image
@@ -84,7 +86,7 @@ jobs:
       - name: Checkout main
         uses: actions/checkout@v2.3.4
       - name: Log in to GitHub Packages
-        run: echo ${GITHUB_TOKEN} | docker login -u ${GITHUB_ACTOR} --password-stdin ghcr.io
+        run: echo ${GITHUB_TOKEN} | docker login -u ${GITHUB_ACTOR} --password-stdin docker.pkg.github.com
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Pull image
